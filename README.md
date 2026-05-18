@@ -2,54 +2,22 @@
 
 ## Project Overview
 
-This project analyzes supply chain operations data using SQL and Python to identify operational inefficiencies, customer ordering behavior, inventory priorities, and cancellation trends.
+This project analyzes operational supply chain and fulfillment data to identify demand patterns, customer purchasing trends, supplier dependencies, and inventory prioritization opportunities.
 
-The analysis focuses on improving:
-- Order fulfillment efficiency
-- Inventory prioritization
-- Customer demand analysis
-- Cancellation monitoring
-- Operational decision-making
+Using SQL and Python, the analysis focuses on operational performance, procurement visibility, demand concentration, and inventory classification to support data-driven supply chain decision-making.
 
-The project simulates a real-world business scenario where operational data is analyzed to support supply chain optimization and logistics planning.
+The project simulates a real-world operational analytics workflow by combining structured SQL analysis with Python-based exploratory analysis and business-focused visualizations.
 
 ---
 
-## Business Problem
+## Business Objectives
 
-Supply chain operations often face challenges such as:
-- High product cancellation rates
-- Inefficient inventory allocation
-- Demand fluctuations
-- Customer concentration risks
-- Operational inefficiencies
-
-This project aims to analyze operational data and generate actionable insights that can improve supply chain performance.
-
----
-
-## Objectives
-
-The analysis aims to answer the following business questions:
-
-- Which customers contribute the highest order volume?
-- Which products experience the highest cancellation rates?
-- Which inventory items should receive priority?
-- What operational patterns exist in customer orders?
-- Which products create operational risk?
-- How can order fulfillment efficiency be improved?
-
----
-
-## Dataset Information
-
-The dataset contains:
-- Customer orders
-- Product-level sales
-- Cancellation data
-- Order quantities
-- Transaction dates
-- Operational metrics
+- Analyze customer order behavior and operational demand trends
+- Identify high-demand products and inventory priorities
+- Evaluate supplier procurement activity and operational dependency risks
+- Monitor fluctuations in operational order volume over time
+- Support inventory planning using ABC classification methodology
+- Generate operational insights to improve supply chain efficiency
 
 ---
 
@@ -60,76 +28,122 @@ The dataset contains:
 - Pandas
 - Matplotlib
 - Jupyter Notebook
+- Git & GitHub
 
 ---
 
-## SQL Concepts Used
+## Project Structure
 
-- Joins
-- Aggregate Functions
-- Window Functions
-- Common Table Expressions (CTEs)
-- CASE Statements
-- Ranking Functions
-- Subqueries
-- Data Aggregation
+```text
+Supply-Chain-SQL-Analysis/
+│
+├── data/
+│
+├── sql/
+│   └── supply_chain_operational_analysis.sql
+│
+├── notebooks/
+│   └── supply_chain_analysis.ipynb
+│
+├── images/
+│
+└── README.md
+```
 
 ---
 
-## Analysis Areas
+## SQL Analysis Areas
 
-### Customer Analysis
-- Top customers by order volume
-- Customer contribution analysis
-- Customer ranking
+The SQL analysis focuses on operational and fulfillment analytics across multiple business functions, including:
 
-### Product Performance Analysis
-- High-demand products
-- Product order trends
-- Product-level operational analysis
-
-### Cancellation Analysis
-- Cancellation rate by product
-- Operational inefficiency analysis
-- High-risk inventory identification
-
-### Inventory Prioritization
+- Data validation and quality assessment
+- Customer order analysis
+- Product demand analysis
+- Operational KPI reporting
+- Cancellation and operational risk analysis
 - ABC inventory classification
-- Demand concentration analysis
-- Inventory optimization insights
-
-### Trend Analysis
-- Order volume trends over time
-- Operational demand patterns
-- Periodic demand spikes
+- Demand segmentation
+- Window function and ranking analysis
+- Common Table Expressions (CTEs)
+- Operational trend analysis
 
 ---
 
-## Key Insights
+## Python Operational Analysis
 
-- A small percentage of customers contributed a large share of total orders.
-- Certain products consistently showed higher cancellation rates.
-- ABC analysis identified a small group of high-priority inventory items.
-- Order patterns revealed operational demand fluctuations.
-- Several products may require improved forecasting and inventory planning.
+The Python notebook extends the SQL analysis through exploratory analytics and visualization, including:
 
----
-
-## Recommendations
-
-- Increase safety stock for high-demand inventory items.
-- Investigate root causes behind high product cancellations.
-- Monitor high-risk operational products closely.
-- Improve inventory allocation for top-performing products.
-- Use demand trends to support operational forecasting.
+- Operational KPI summaries
+- Customer demand visualization
+- Product demand analysis
+- Supplier procurement analysis
+- Operational trend visualization
+- ABC inventory classification
+- Business insight generation
 
 ---
 
-## Future Improvements
+## Key Operational Insights
 
-- Add advanced Python-based exploratory analysis
-- Build operational dashboards
-- Implement demand forecasting
-- Automate reporting workflows
+- A concentrated group of products generated the majority of operational demand volume
+- Customer ordering activity revealed demand concentration among key accounts
+- Procurement analysis highlighted operational dependency on a limited number of suppliers
+- ABC analysis identified high-priority inventory categories requiring closer operational monitoring
+- Operational order trends revealed fluctuations in demand patterns over time
 
 ---
+
+## Sample Visualizations
+
+### Product Demand Analysis
+
+![Top Products](images/top_products.png)
+
+---
+
+### Customer Order Analysis
+
+![Top Customers](images/top_customers.png)
+
+---
+
+### Supplier Performance Analysis
+
+![Top Suppliers](images/top_suppliers.png)
+
+---
+
+### Operational Order Trends
+
+![Order Trends](images/order_trends.png)
+
+---
+
+### ABC Inventory Classification
+
+![ABC Inventory](images/abc_inventory.png)
+
+---
+
+## Key Skills Demonstrated
+
+- Operational analytics
+- Supply chain analysis
+- SQL querying and analytical functions
+- KPI reporting and data aggregation
+- Python data analysis
+- Data visualization
+- Inventory classification analysis
+- Procurement analytics
+- Business insight generation
+
+---
+
+## Future Enhancements
+
+- Demand forecasting and trend prediction
+- Supplier risk scoring models
+- Inventory optimization analysis
+- Logistics and transportation analysis
+- Interactive operational dashboards
+- Automated reporting workflows
