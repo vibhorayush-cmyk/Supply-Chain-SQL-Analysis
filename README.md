@@ -2,22 +2,22 @@
 
 ## Project Overview
 
-This project analyzes operational supply chain and fulfillment data to identify demand patterns, customer purchasing trends, supplier dependencies, and inventory prioritization opportunities.
+This project analyzes operational supply chain and fulfillment data to identify demand patterns, customer purchasing behavior, procurement activity, delivery performance, and inventory prioritization opportunities.
 
-Using SQL and Python, the analysis focuses on operational performance, procurement visibility, demand concentration, and inventory classification to support data-driven supply chain decision-making.
+Using SQL and Python, the analysis focuses on operational efficiency, procurement visibility, fulfillment trends, demand concentration, and inventory classification to support data-driven supply chain decision-making.
 
-The project simulates a real-world operational analytics workflow by combining structured SQL analysis with Python-based exploratory analysis and business-focused visualizations.
+The project simulates a real-world operational analytics workflow by combining structured SQL analysis with Python-based business analytics and visualization.
 
 ---
 
 ## Business Objectives
 
-- Analyze customer order behavior and operational demand trends
-- Identify high-demand products and inventory priorities
-- Evaluate supplier procurement activity and operational dependency risks
-- Monitor fluctuations in operational order volume over time
-- Support inventory planning using ABC classification methodology
-- Generate operational insights to improve supply chain efficiency
+- Analyze operational demand trends and customer purchasing behavior
+- Identify high-revenue products and customer concentration patterns
+- Evaluate supplier procurement activity and operational dependency
+- Monitor delivery performance and fulfillment efficiency
+- Support inventory prioritization using ABC classification analysis
+- Generate operational insights to improve supply chain performance
 
 ---
 
@@ -27,7 +27,6 @@ The project simulates a real-world operational analytics workflow by combining s
 - Python
 - Pandas
 - Matplotlib
-- Jupyter Notebook
 - Git & GitHub
 
 ---
@@ -35,17 +34,28 @@ The project simulates a real-world operational analytics workflow by combining s
 ## Project Structure
 
 ```text
-Supply-Chain-SQL-Analysis/
+Supply-Chain-Operations-Analytics/
 │
 ├── data/
+│   ├── sales_orders.csv
+│   ├── procurement_orders.csv
+│   ├── product_master.csv
+│   ├── customer_master.csv
+│   └── supplier_master.csv
 │
 ├── sql/
 │   └── supply_chain_operational_analysis.sql
 │
-├── notebooks/
-│   └── supply_chain_analysis.ipynb
+├── python/
+│   └── supply_chain_analysis.py
 │
 ├── images/
+│   ├── top_products.png
+│   ├── top_customers.png
+│   ├── delivery_performance.png
+│   ├── top_suppliers.png
+│   ├── monthly_revenue_trend.png
+│   └── abc_inventory.png
 │
 └── README.md
 ```
@@ -60,7 +70,8 @@ The SQL analysis focuses on operational and fulfillment analytics across multipl
 - Customer order analysis
 - Product demand analysis
 - Operational KPI reporting
-- Cancellation and operational risk analysis
+- Delivery and fulfillment analysis
+- Procurement and supplier analysis
 - ABC inventory classification
 - Demand segmentation
 - Window function and ranking analysis
@@ -71,51 +82,68 @@ The SQL analysis focuses on operational and fulfillment analytics across multipl
 
 ## Python Operational Analysis
 
-The Python notebook extends the SQL analysis through exploratory analytics and visualization, including:
+The Python analysis script extends the SQL analysis through operational KPI reporting, business analytics, and data visualization, including:
 
 - Operational KPI summaries
-- Customer demand visualization
-- Product demand analysis
+- Product revenue analysis
+- Customer revenue analysis
+- Delivery performance analysis
 - Supplier procurement analysis
-- Operational trend visualization
+- Monthly operational trend analysis
 - ABC inventory classification
 - Business insight generation
 
 ---
 
+## Operational KPI Summary
+
+- Total Orders: 20,000
+- Total Revenue: 15.5M+
+- Total Customers: 500
+- Total Products: 200
+
+---
+
 ## Key Operational Insights
 
-- A concentrated group of products generated the majority of operational demand volume
-- Customer ordering activity revealed demand concentration among key accounts
-- Procurement analysis highlighted operational dependency on a limited number of suppliers
-- ABC analysis identified high-priority inventory categories requiring closer operational monitoring
-- Operational order trends revealed fluctuations in demand patterns over time
+- A concentrated group of products generated the majority of operational revenue
+- Customer demand showed concentration among high-value accounts
+- Procurement activity highlighted operational dependency on major suppliers
+- Delivery analysis identified fulfillment performance trends across operations
+- ABC classification identified high-priority inventory categories requiring closer monitoring
+- Monthly revenue trends revealed fluctuations in operational demand over time
 
 ---
 
 ## Sample Visualizations
 
-### Product Demand Analysis
+### Product Revenue Analysis
 
 ![Top Products](images/top_products.png)
 
 ---
 
-### Customer Order Analysis
+### Customer Revenue Analysis
 
 ![Top Customers](images/top_customers.png)
 
 ---
 
-### Supplier Performance Analysis
+### Delivery Performance Analysis
+
+![Delivery Performance](images/delivery_performance.png)
+
+---
+
+### Supplier Procurement Analysis
 
 ![Top Suppliers](images/top_suppliers.png)
 
 ---
 
-### Operational Order Trends
+### Monthly Operational Trend Analysis
 
-![Order Trends](images/order_trends.png)
+![Monthly Revenue Trend](images/monthly_revenue_trend.png)
 
 ---
 
@@ -128,13 +156,14 @@ The Python notebook extends the SQL analysis through exploratory analytics and v
 ## Key Skills Demonstrated
 
 - Operational analytics
-- Supply chain analysis
+- Supply chain analytics
 - SQL querying and analytical functions
-- KPI reporting and data aggregation
+- Data aggregation and KPI reporting
 - Python data analysis
-- Data visualization
+- Business data visualization
 - Inventory classification analysis
 - Procurement analytics
+- Fulfillment analysis
 - Business insight generation
 
 ---
@@ -147,3 +176,4 @@ The Python notebook extends the SQL analysis through exploratory analytics and v
 - Logistics and transportation analysis
 - Interactive operational dashboards
 - Automated reporting workflows
+- Predictive supply chain analytics
