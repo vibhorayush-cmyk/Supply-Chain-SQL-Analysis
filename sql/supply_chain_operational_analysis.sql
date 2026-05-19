@@ -3,276 +3,107 @@
 -- =====================================================
 
 -- Project Objective:
--- Analyze customer orders, operational trends,
--- product demand, and cancellation behavior
--- to generate business insights for supply chain optimization.
+-- Analyze operational supply chain data to identify
+-- demand trends, procurement activity, inventory
+-- prioritization, and operational performance metrics.
 
 
 -- =====================================================
--- DATA VALIDATION & CLEANING
+-- DATA VALIDATION & QUALITY CHECKS
 -- =====================================================
+
 -- Check for missing values
 
-SELECT *
-FROM sales_test
-WHERE customer_no IS NULL
-   OR item IS NULL;
+-- Check duplicate orders
 
+-- Validate negative quantities
 
--- Check for duplicate records
-
-SELECT
-    customer_no,
-    item,
-    date,
-    COUNT(*) AS duplicate_count
-FROM sales_test
-GROUP BY customer_no, item, date
-HAVING COUNT(*) > 1;
-
-
--- Check for invalid order quantities
-
-SELECT *
-FROM sales_test
-WHERE ns_order < 0;
-
--- =====================================================
--- CUSTOMER ANALYSIS
--- =====================================================
-
--- Top customers by total order volume
-
-SELECT
-    customer_no,
-    SUM(ns_order) AS total_orders
-FROM sales_test
-GROUP BY customer_no
-ORDER BY total_orders DESC
-LIMIT 10;
-
--- Customer ranking using window functions
-
-SELECT
-    customer_no,
-    SUM(ns_order) AS total_orders,
-    DENSE_RANK() OVER(
-        ORDER BY SUM(ns_order) DESC
-    ) AS customer_rank
-FROM sales_test
-GROUP BY customer_no;
-
--- =====================================================
--- PRODUCT PERFORMANCE ANALYSIS
--- =====================================================
-
-
--- Top products by order volume
-
-SELECT
-    item,
-    SUM(ns_order) AS total_orders
-FROM sales_test
-GROUP BY item
-ORDER BY total_orders DESC;
-
--- =====================================================
--- CANCELLATION ANALYSIS
--- =====================================================
-
-
--- Cancellation rate by product
-
-SELECT
-    s.item,
-    SUM(s.ns_order) AS total_orders,
-    COALESCE(SUM(c.nc_order),0) AS canceled_orders,
-
-    ROUND(
-        COALESCE(SUM(c.nc_order),0) * 100.0 /
-        SUM(s.ns_order),
-        2
-    ) AS cancellation_rate
-
-FROM sales_test s
-
-LEFT JOIN canceled_test c
-ON s.item = c.item
-
-GROUP BY s.item
-ORDER BY cancellation_rate DESC;
-
--- =====================================================
--- ABC INVENTORY CLASSIFICATION
--- =====================================================
-
-
-SELECT
-    item,
-    SUM(ns_order) AS total_orders,
-
-    CASE
-        WHEN SUM(ns_order) >= 500 THEN 'A'
-        WHEN SUM(ns_order) >= 200 THEN 'B'
-        ELSE 'C'
-    END AS inventory_category
-
-FROM sales_test
-GROUP BY item
-ORDER BY total_orders DESC;
-
--- =====================================================
--- OPERATIONAL TREND ANALYSIS
--- =====================================================
-
-
--- Analyze operational demand patterns over time
--- to identify ordering trends and potential demand spikes
-
-SELECT
-    date,
-    SUM(ns_order) AS total_orders
-FROM sales_test
-GROUP BY date
-ORDER BY date;
-
--- Running cumulative order volume
-
-SELECT
-    date,
-    customer_no,
-    ns_order,
-
-    SUM(ns_order) OVER(
-        ORDER BY date
-    ) AS cumulative_orders
-
-FROM sales_test;
-
--- =====================================================
--- ADVANCED SQL ANALYSIS USING CTEs
--- =====================================================
-
-
-WITH customer_orders AS (
-
-    SELECT
-        customer_no,
-        SUM(ns_order) AS total_orders
-
-    FROM sales_test
-    GROUP BY customer_no
-)
-
-SELECT *
-FROM customer_orders
-WHERE total_orders >
-(
-    SELECT AVG(total_orders)
-    FROM customer_orders
-)
-ORDER BY total_orders DESC;
 
 -- =====================================================
 -- OPERATIONAL KPI SUMMARY
 -- =====================================================
 
+-- Total revenue
 
-SELECT
+-- Total orders
 
-    COUNT(DISTINCT customer_no) AS total_customers,
+-- Average order value
 
-    COUNT(DISTINCT item) AS total_products,
+-- Total customers
 
-    SUM(ns_order) AS total_orders,
-
-    ROUND(
-        AVG(ns_order),
-        2
-    ) AS avg_order_quantity
-
-FROM sales_test;
+-- Total products
 
 
 -- =====================================================
--- HIGH-RISK PRODUCT IDENTIFICATION
+-- CUSTOMER DEMAND ANALYSIS
 -- =====================================================
 
--- Identify products with elevated cancellation risk
+-- Top customers by revenue
 
-SELECT
-    s.item,
+-- Customer ranking analysis
 
-    SUM(s.ns_order) AS total_orders,
+-- Customer demand concentration
 
-    COALESCE(SUM(c.nc_order),0) AS canceled_orders,
-
-    ROUND(
-        COALESCE(SUM(c.nc_order),0) * 100.0 /
-        SUM(s.ns_order),
-        2
-    ) AS cancellation_rate
-
-FROM sales_test s
-
-LEFT JOIN canceled_test c
-ON s.item = c.item
-
-GROUP BY s.item
-
-HAVING cancellation_rate > 20
-
-ORDER BY cancellation_rate DESC;
 
 -- =====================================================
--- ADVANCED OPERATIONAL INSIGHTS
+-- PRODUCT PERFORMANCE ANALYSIS
 -- =====================================================
 
--- Monthly operational order trends
+-- Top products by revenue
 
-SELECT
-    DATE_FORMAT(date, '%Y-%m') AS order_month,
-    SUM(ns_order) AS total_orders
-
-FROM sales_test
-
-GROUP BY order_month
-ORDER BY order_month;
-
--- Customer contribution to total order volume
-
-SELECT
-    customer_no,
-
-    SUM(ns_order) AS total_orders,
-
-    ROUND(
-        SUM(ns_order) * 100.0 /
-        (SELECT SUM(ns_order) FROM sales_test),
-        2
-    ) AS contribution_percentage
-
-FROM sales_test
-
-GROUP BY customer_no
-
-ORDER BY total_orders DESC;
+-- Top products by order quantity
 
 -- Product demand segmentation
 
-SELECT
-    item,
 
-    SUM(ns_order) AS total_orders,
+-- =====================================================
+-- DELIVERY & FULFILLMENT ANALYSIS
+-- =====================================================
 
-    CASE
-        WHEN SUM(ns_order) >= 500 THEN 'High Demand'
-        WHEN SUM(ns_order) >= 200 THEN 'Medium Demand'
-        ELSE 'Low Demand'
-    END AS demand_segment
+-- Delivery status analysis
 
-FROM sales_test
+-- Late delivery risk by carrier
 
-GROUP BY item
-ORDER BY total_orders DESC;
+-- Fulfillment performance metrics
 
+
+-- =====================================================
+-- PROCUREMENT & SUPPLIER ANALYSIS
+-- =====================================================
+
+-- Top suppliers by procurement volume
+
+-- Supplier dependency analysis
+
+-- Procurement cost trends
+
+
+-- =====================================================
+-- INVENTORY CLASSIFICATION ANALYSIS
+-- =====================================================
+
+-- ABC inventory classification
+
+
+-- =====================================================
+-- OPERATIONAL TREND ANALYSIS
+-- =====================================================
+
+-- Monthly revenue trends
+
+-- Monthly order volume trends
+
+-- Seasonal operational patterns
+
+
+-- =====================================================
+-- ADVANCED SQL ANALYSIS
+-- =====================================================
+
+-- Window functions
+
+-- Common Table Expressions (CTEs)
+
+-- Ranking analysis
+
+-- Running totals
